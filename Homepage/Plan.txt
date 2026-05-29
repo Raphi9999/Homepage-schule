@@ -1,0 +1,9 @@
+- Home-Seite mit Überblick
+Einzelseiten für:
+    OOP
+        - Beispiele
+        - Erklärung (Versuch zumindest :D)
+    Skriptsprachen
+    Syntax
+    Geschichte v. Programmiersprachen
+    Vllt. eine Art Quiz zum erraten, welche Sprache etwas ist?
