@@ -32,5 +32,10 @@ def quiz():
     return render_template("quiz.html")
 
 
+@app.route("/sources")
+def sources():
+    return render_template("sources.html")
+
+
 if __name__ == "__main__":
     app.run(debug=True)

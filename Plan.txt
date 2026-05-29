@@ -7,3 +7,9 @@ Einzelseiten für:
     Syntax
     Geschichte v. Programmiersprachen
     Vllt. eine Art Quiz zum erraten, welche Sprache etwas ist?
+
+Hauptseite:
+Was sind Programmiersprachen, Was macht man mit ihnen?
+Tabelle --> Paar Statistiken
+
+
