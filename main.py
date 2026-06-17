@@ -1,6 +1,25 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
+from dotenv import load_dotenv; load_dotenv()
+import os
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
+
+
+
+# DB
+app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_PUBLIC_URL")
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
+db = SQLAlchemy(app)
+
+class QuizParticipant(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(20), nullable=False, unique=True)
+    pts = db.Column(db.Integer)
+
+with app.app_context():
+    db.create_all()
 
 @app.route("/")
 def home():
@@ -30,6 +49,27 @@ def history():
 @app.route("/quiz")
 def quiz():
     return render_template("quiz.html")
+
+@app.route("/quiz/log_participant/<string:user>/<int:pts>", methods=["POST"])
+def quiz_log_participant(user, pts):
+    obj = QuizParticipant(username=user, pts=pts)
+    db.session.add(obj)
+    db.session.commit()
+    return jsonify({"ok": True}), 201
+
+QUESTIONS = {
+    1: ["hallo", ["ja", "nein", "vielleicht", "sicher nciht"]],
+    }
+
+@app.route("/quiz/question/<int:last>", methods=["POST"])
+def quiz_questions(last=0):
+    question = QUESTIONS[last+1]
+    return jsonify({
+        "ok": True, 
+        "nr": last+1, 
+        "question": question[0], 
+        "options": question[1]
+        })
 
 
 @app.route("/sources")

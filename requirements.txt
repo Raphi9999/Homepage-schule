@@ -5,3 +5,6 @@ itsdangerous
 Jinja2
 MarkupSafe
 Werkzeug
+flask-sqlalchemy
+psycopg2-binary
+dotenv
