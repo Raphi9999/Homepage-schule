@@ -5,6 +5,7 @@ body {
     font-size: 19px;
 }
 
+
 .nav-item {
     font-family:Arial, Helvetica, sans-serif;
 }
@@ -24,17 +25,77 @@ body {
 .img-center {
     width: 100%;
     height: auto;
-    border-radius: 6px;
+    border-radius: 16px;
+    margin-bottom: 1rem;
 }
 
 .nav-link  { 
-    border-radius: 12px;
+    border-radius: 16px;
+    padding: 0.6rem 1rem;
     /* Geht leider nicht anders, sonst ist sie 0.01s lang eckig */
 }
 
+
+.quiz-answers {
+    display: flex;
+    margin-bottom: 2rem;
+}
 
 .nav-link:hover {
     background-color: #d2d2d2;
     color: rgb(108, 106, 106);
 }
 
+.answer-btn {
+  font-size: 1.3rem;
+  display: inline-block;
+  padding: 18px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 6px;
+  flex: 1
+}
+
+.answer-btn:hover {
+  background: #f0f0f0;
+  border-color: #222;
+}
+
+.answer-btn input {
+  display: none;
+}
+
+.answer-btn:has(input:checked) {
+  background: #222;
+  color: white;
+  border-color: #222;
+}
+
+.submit-btn {
+  color:white;
+  display: inline-block;
+  border:white;
+  padding: 1.2rem 2.2rem;
+  background-color: rgb(207, 28, 0);
+  border-radius: 16px;
+  cursor: pointer;
+  margin: 6px;
+}
+
+.submit-btn:hover {
+    padding: 1.1rem 2.1rem;
+}
+
+.username-field {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.username-field input {
+  width: 100%;
+  padding: 1rem 1.4rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
+}

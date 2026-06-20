@@ -1,10 +1,19 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, redirect, request, session
 from dotenv import load_dotenv; load_dotenv()
 import os
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
+app.secret_key = "abcdefghijklmnopqrstuvwxyz"
+
+ANSWER_KEY = [
+    "answer_4",
+    "answer_2",
+    "answer_2",
+    "answer_3",
+    "answer_3",
+]
 
 
 # DB
@@ -15,11 +24,9 @@ db = SQLAlchemy(app)
 
 class QuizParticipant(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(20), nullable=False, unique=True)
+    username = db.Column(db.String(20), nullable=False)
     pts = db.Column(db.Integer)
 
-with app.app_context():
-    db.create_all()
 
 @app.route("/")
 def home():
@@ -48,29 +55,31 @@ def history():
 
 @app.route("/quiz")
 def quiz():
-    return render_template("quiz.html")
+    if not session.get("pts", None):
+        return render_template("quiz.html")
 
-@app.route("/quiz/log_participant/<string:user>/<int:pts>", methods=["POST"])
-def quiz_log_participant(user, pts):
-    obj = QuizParticipant(username=user, pts=pts)
+    leaderboard = QuizParticipant.query.order_by(QuizParticipant.pts.desc()).limit(10).all() #letzte 10 nach pts geordnet
+
+    return render_template("quiz_done.html", pts=session.get("pts"), username=session.get("username"), leaderboard=leaderboard)
+
+@app.route("/quiz/log_participant", methods=["POST"])
+def quiz_log_participant():
+    pts = 0
+
+    for i in range(5):
+        if request.form.get(f"q{i+1}") == ANSWER_KEY[i]:
+            pts += 1
+
+    username = request.form.get("username").strip()
+
+    session["pts"] = pts
+    session["username"] = username
+
+    obj = QuizParticipant(username=username, pts=pts)
     db.session.add(obj)
     db.session.commit()
-    return jsonify({"ok": True}), 201
 
-QUESTIONS = {
-    1: ["hallo", ["ja", "nein", "vielleicht", "sicher nciht"]],
-    }
-
-@app.route("/quiz/question/<int:last>", methods=["POST"])
-def quiz_questions(last=0):
-    question = QUESTIONS[last+1]
-    return jsonify({
-        "ok": True, 
-        "nr": last+1, 
-        "question": question[0], 
-        "options": question[1]
-        })
-
+    return redirect("/quiz")
 
 @app.route("/sources")
 def sources():
@@ -79,9 +88,6 @@ def sources():
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-
-
 
 
 

@@ -3,6 +3,113 @@
 {% block content %}
 <div class="main-content">
     <div class="blocksatz">
+        <h1><b>Quiz</b></h1>
+
+        <form method="POST" action="/quiz/log_participant">
+            <h3>Welche der folgenden Programmiersprachen ist NICHT objektorientiert?</h3>
+            <div class="quiz-answers">
+                <label class="answer-btn">
+                    <input type="radio" name="q1" value="answer_1">
+                    C#
+                </label>
+                <label class="answer-btn">
+                    <input type="radio" name="q1" value="answer_2">
+                    Python
+                </label>
+                <label class="answer-btn">
+                    <input type="radio" name="q1" value="answer_3">
+                    C++
+                </label>
+                <label class="answer-btn">
+                    <input type="radio" name="q1" value="answer_4">
+                    C
+                </label>
+            </div>
+
+            <h3>Was tut das Schwein aus dem Beispiel, wenn es etwas zu essen erhält, das nicht zu seinem Lieblingsessen gehört?</h3>
+            <div class="quiz-answers">
+                <label class="answer-btn">
+                    <input type="radio" name="q2" value="answer_1">
+                    Dankbar grunzen
+                </label>
+                <label class="answer-btn">
+                    <input type="radio" name="q2" value="answer_2">
+                    Wütend grunzen
+                </label>
+                <label class="answer-btn">
+                    <input type="radio" name="q2" value="answer_3">
+                    Dich anschreien
+                </label>
+                <label class="answer-btn">
+                    <input type="radio" name="q2" value="answer_4">
+                    Einschlafen
+                </label>
+            </div>
+
+            <h3>In welcher Sprache sind Makros auf Windows in der Regel geschrieben?</h3>
+            <div class="quiz-answers">
+                <label class="answer-btn">
+                    <input type="radio" name="q3" value="answer_1">
+                    Bash
+                </label>
+                <label class="answer-btn">
+                    <input type="radio" name="q3" value="answer_2">
+                    VBA
+                </label>
+                <label class="answer-btn">
+                    <input type="radio" name="q3" value="answer_3">
+                    Python
+                </label>
+                <label class="answer-btn">
+                    <input type="radio" name="q3" value="answer_4">
+                    CSS
+                </label>
+            </div>
+
+            <h3>Welche dieser Sprachen gehört NICHT zu den 3 "höheren" Programmiersprachen, die in den 1950er Jahren entstanden?</h3>
+            <div class="quiz-answers">
+                <label class="answer-btn">
+                    <input type="radio" name="q4" value="answer_1">
+                    COBOL
+                </label>
+                <label class="answer-btn">
+                    <input type="radio" name="q4" value="answer_2">
+                    Fortran
+                </label>
+                <label class="answer-btn">
+                    <input type="radio" name="q4" value="answer_3">
+                    BASIC
+                </label>
+                <label class="answer-btn">
+                    <input type="radio" name="q4" value="answer_4">
+                    Lisp
+                </label>
+            </div>
+
+            <h3>Aus wievielen Zeilen Code schätzt du, besteht diese komplette Website? (Frontend und Backend)</h3>
+            <div class="quiz-answers">
+                <label class="answer-btn">
+                    <input type="radio" name="q5" value="answer_1">
+                    etwa 50
+                </label>
+                <label class="answer-btn">
+                    <input type="radio" name="q5" value="answer_2">
+                    etwa 200
+                </label>
+                <label class="answer-btn">
+                    <input type="radio" name="q5" value="answer_3">
+                    etwa 550
+                </label>
+                <label class="answer-btn">
+                    <input type="radio" name="q5" value="answer_4">
+                    etwa 1000
+                </label>
+            </div>
+            <div class="username-field">
+                <input type="text" id="username" name="username" placeholder="Username eingeben!" required>
+            </div>
+            <button type="submit" class="submit-btn">PRESSS</button>
+        </form>
     </div>
 </div>
 {% endblock %}
