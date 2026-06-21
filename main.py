@@ -62,6 +62,14 @@ def quiz():
 
     return render_template("quiz_done.html", pts=session.get("pts"), username=session.get("username"), leaderboard=leaderboard)
 
+
+@app.route("/quiz/leaderboard")
+def quiz_leaderboard():
+    leaderboard = QuizParticipant.query.order_by(QuizParticipant.pts.desc()).limit(20).all() #letzte 20 nach pts geordnet
+
+    return render_template("quiz_done.html", leaderboard=leaderboard)
+
+
 @app.route("/quiz/log_participant", methods=["POST"])
 def quiz_log_participant():
     pts = 0

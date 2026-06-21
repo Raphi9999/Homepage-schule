@@ -3,12 +3,13 @@
 {% block content %}
 <div class="main-content">
     <div class="blocksatz">
-        <h1><b>Quiz</b></h1>
-        <h2>Vielen Dank für's Spielen, <b>{{ username }}</b>. Du hast <b>{{pts}}</b> von 5 Punkten erreicht!</h2><br>
-
+        {% if username %}
+            <h1><b>Quiz</b></h1>
+            <h2>Vielen Dank für's Spielen, <b>{{ username }}</b>. Du hast <b>{{pts}}</b> von 5 Punkten erreicht!</h2><br>
+        {% endif %}
         <h1>Leaderboard</h1>
 
-        <table class="table table-striped table-bordered" style="overflow: hidden; border-radius: 6px;">
+        <table class="table table-striped table-bordered">
         <thead>
             <tr>
                 <th scope="col">Platzierung</th>

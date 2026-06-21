@@ -59,7 +59,7 @@ body {
 
 .answer-btn:hover {
   background: #f0f0f0;
-  border-color: #222;
+  border-color: rgb(34, 34, 34);
 }
 
 .answer-btn input {
@@ -98,4 +98,17 @@ body {
   border: 1px solid #ccc;
   border-radius: 10px;
   font-size: 16px;
+}
+
+.leaderboard-btn {
+  padding: 0.7rem 1.2rem;
+  border-radius: 16px;
+  background-color: rgb(108, 106, 106);
+  color: white;
+  border: none;
+}
+
+.centered-right {
+  display: flex;
+  justify-content: flex-end;
 }
