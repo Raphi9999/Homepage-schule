@@ -65,9 +65,16 @@ def quiz():
 
 @app.route("/quiz/leaderboard")
 def quiz_leaderboard():
+    """
+    Ich weiß, dass hier wegen dem vorherigen redirect (Zeile 97), das ganze ohne das css und den head von der index.html gerendert wird,
+    hab aber keine Zeit/Lust mehr das zu fixen, ist hoffentlich kein allzugroßes Problem...
+    """
+
     leaderboard = QuizParticipant.query.order_by(QuizParticipant.pts.desc()).limit(20).all() #letzte 20 nach pts geordnet
 
     return render_template("quiz_done.html", leaderboard=leaderboard)
+
+
 
 
 @app.route("/quiz/log_participant", methods=["POST"])
@@ -95,7 +102,7 @@ def sources():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
 
 
 
