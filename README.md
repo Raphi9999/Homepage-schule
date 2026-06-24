@@ -19,5 +19,9 @@ müsste man eine eigene .env-Datei anlegen mit der Public URL der Datenbank. Dan
 man mit "python main.py" die Website im Developer-Modus starten. Sie läuft dann standardmäßig
 auf http://127.0.0.1:5000 (bzw. http:localhost:5000).
 
+### Deployment
+Die Website ist über den Cloud-Provider Railway gehostet. Sie ist zu finden unter: "https://homepage-schule-prod.up.railway.app"
+Dort liegt logischerweise auch die Datenbank.
+
 
 
